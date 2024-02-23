@@ -1,0 +1,15 @@
+name: Accounting
+type: module
+description: 'Defines common functionality for Accounting module.'
+package: Accounting
+core_version_requirement: ^9.3 || ^10
+configure: accounting.configuration
+dependencies:
+  - entity:entity
+  - inline_entity_form:inline_entity_form
+  - token:token
+  - drupal:datetime
+  - drupal:views
+
+version: '8.x-2.38'
+project: 'accounting'

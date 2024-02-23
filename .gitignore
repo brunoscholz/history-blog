@@ -1,0 +1,76 @@
+# gitignore template for Drupal 8 projects
+#
+# earlier versions of Drupal are tracked in `community/PHP/`
+
+# Ignore configuration files that may contain sensitive information
+/web/sites/*/settings*.php
+/web/sites/*/*services*.yml
+.env
+web/README.md
+
+# Ignore paths that may contain user-generated content
+/web/sites/*/files/*
+/web/sites/*/public
+/web/sites/*/private
+/web/sites/*/files-public
+/files-private
+
+# Ignore paths that may contain temporary files
+/web/sites/*/translations
+/web/sites/*/tmp
+/web/sites/*/cache
+
+# Ignore drupal core (if not versioning drupal sources)
+/deploy
+/tests/behat
+/vendor
+/web/core
+/web/libraries
+/web/modules/contrib
+/web/profiles/contrib
+/web/themes/contrib
+/web/sites/README.txt
+/web/sites/example.sites.php
+/web/sites/example.settings.local.php
+/web/sites/development.services.yml
+/web/.csslintrc
+/web/.editorconfig
+/web/.eslintignore
+/web/.eslintrc.json
+/web/.gitattributes
+/web/.ht.router.php
+/web/autoload.php
+/web/example.gitignore
+/web/index.php
+/web/INSTALL.txt
+/web/LICENSE.txt
+/web/README.txt
+/web/robots.txt
+/web/update.php
+/web/web.config
+/drush/sites/local.drush.yml
+
+# Exceptions
+!/web/sites/default/settings.php
+!/web/sites/default/files/.htaccess
+
+# Editor files
+.gitattributes
+node_modules
+
+# Ignore devs trash
+.env
+.vscode
+.idea
+*.log
+*.sql
+*.zip
+*:Zone.Identifier
+._*
+*.DS_Store
+
+# Others
+.acquia-cli.yml
+/nbproject/private/
+
+*.pem
