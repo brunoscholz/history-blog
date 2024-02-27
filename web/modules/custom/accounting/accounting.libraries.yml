@@ -1,0 +1,20 @@
+base:
+  version: VERSION
+  css:
+    base:
+      css/accounting.base.css: {}
+
+dashboard:
+  version: VERSION
+  css:
+    component:
+      css/accounting.management-links.css: {}
+      css/accounting.inbox.css: {}
+      css/accounting.metrics.css: {}
+      css/accounting.dashboard.css: {}
+  dependencies:
+    - accounting/base
+    - core/drupal
+    - core/once
+  js:
+    js/accounting.management-links.js: {}

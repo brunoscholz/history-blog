@@ -22,7 +22,6 @@
         "drupal/core-composer-scaffold": "^10.2.3",
         "drupal/core-project-message": "^10.2.3",
         "drupal/core-recommended": "^10.2.3",
-        "drupal/inline_entity_form": "3.0.0-rc15",
         "drush/drush": "^12.4.3"
     },
     "conflict": {

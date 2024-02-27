@@ -1,0 +1,17 @@
+<div class="accounting-dashboard--accounts-list">
+  <a href="{{ links['accounting-accounts-add'].url }}" class="accounts-list-toggle" type="button" aria-controls="accounts-list" aria-label="Toggle accounts menu">
+    <span class="accounts-list-toggle__icon">Add Account</span>
+  </a>
+  <div class="accounts-list" aria-labelledby="accounts-list">
+    {{ dump() }}
+    {% for key, account in accounts %}
+    <div class="accounts-list--{{ key }}">
+      <div class="card">
+        <p>{{ account.name }}</p>
+        <p>{{ account.group }}</p>
+        <p>{{ account.balance }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

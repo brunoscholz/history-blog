@@ -1,0 +1,45 @@
+accounting.admin_accounting:
+  path: '/admin/accounting'
+  defaults:
+    _controller: '\Drupal\accounting\Controller\DashboardController::dashboardPage'
+    _title: 'Accounting'
+  requirements:
+    _permission: 'access accounting administration pages'
+
+accounting.accounts:
+  path: '/admin/accounting/accounts'
+  defaults:
+    _controller: '\Drupal\accounting\Controller\AccountController::accountsPage'
+    link_id: 'accounting.accounts'
+    _title: 'Accounts'
+  requirements:
+    _permission: 'access accounts pages/view'
+
+accounting.accounts_add:
+  path: '/admin/accounting/accounts/add'
+  defaults:
+    _controller: '\Drupal\accounting\Controller\AccountController::addAccount'
+    link_id: 'accounting.accounts_add'
+    _title: 'New Account'
+    _template: 'modules/custom/accounting/templates/accounting-dashboard-accounts-form.html.twig'
+  requirements:
+    _permission: 'access accounts pages/view'
+
+accounting.configuration:
+  path: '/admin/accounting/config'
+  defaults:
+    _form: \Drupal\accounting\Form\AccountingSettingsForm
+    link_id: 'accounting.configuration'
+    _title: 'Configuration'
+  requirements:
+    _permission: 'access accounting administration pages'
+
+accounting.account_form:
+  path: /admin/accounting/account
+  defaults:
+    _title: Account Config
+    _form: \Drupal\accounting\Form\AccountForm
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

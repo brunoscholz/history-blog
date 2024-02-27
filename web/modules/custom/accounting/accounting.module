@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Defines common functionality for all accounting modules.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function accounting_theme($existing, $type, $theme, $path) {
+  return [
+    'accounting_dashboard_management_links' => [
+      'variables' => [
+        'links' => [],
+      ],
+    ],
+    'accounting_dashboard_accounts_form' => [
+      'variables' => [
+        'form' => [],
+      ],
+    ],
+    'accounting_dashboard_accounts_list' => [
+      'variables' => [
+        'accounts' => [],
+        'links' => [],
+        'form' => [],
+      ],
+    ],
+  ];
+}

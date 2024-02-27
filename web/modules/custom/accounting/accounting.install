@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the accounting_account module.
+ */
+
+function accounting_schema() {
+  // Create a database table called 'accounting_account' wit the following columns:
+  // 1) id [serial], 2) uid [int], 3) nid [int], 4) mail [varchar], 5) created [int]
+  $schema['accounting_account'] = [
+    'description' => 'Stores name, group, balance, nid and uid for an Account.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for the record.',
+        'type' => 'serial',
+        'size' => 'small', // tiny / small / medium / normal / big
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'description' => 'The {users}.uid that added this Account.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'nid' => [
+        'description' => 'The {node}.nid for this Account.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The name of the entity.',
+      ],
+      'group' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The group of the entity.',
+      ],
+      'balance' => [
+        'type' => 'numeric',
+        'precision' => 12,
+        'scale' => 2,
+        'not null' => TRUE,
+        'default' => 0.00,
+        'description' => 'The balance.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'node' => ['nid'],
+      'node_user' => ['nid', 'uid'],
+    ],
+  ];
+
+  // Create a database table named 'accounting_account_enabled' with the following fields:
+  // 1) nid [int]
+  $schema['accounting_transaction'] = [
+    'description' => 'Tansaction record.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for the record.',
+        'type' => 'serial',
+        'size' => 'small', // tiny / small / medium / normal / big
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'description' => 'The {users}.uid that added this TX.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'note' => [
+        'description' => 'Memo for the TX.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'date' => [
+        'description' => 'Timestamp for when TX was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'amount' => [
+        'description' => 'The amount.',
+        'type' => 'numeric',
+        'precision' => 12,
+        'scale' => 2,
+        'not null' => TRUE,
+        'default' => 0.00,
+      ],
+      'from' => [
+        'description' => 'Account FROM.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'to' => [
+        'description' => 'Account TO.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'part_from' => [
+        'description' => 'The {node}.nid for this Account.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'part_to' => [
+        'description' => 'The {node}.nid for this Account.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
