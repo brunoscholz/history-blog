@@ -1,0 +1,20 @@
+# accounting/config/install/field.storage.accounting_account.field_balance.yml
+langcode: en
+status: true
+dependencies:
+  module:
+    - accounting
+id: accounting_account.field_balance
+field_name: field_balance
+entity_type: accounting_account
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

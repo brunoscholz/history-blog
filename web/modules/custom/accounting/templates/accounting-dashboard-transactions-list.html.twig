@@ -1,0 +1,19 @@
+<div class="accounting-dashboard--transactions-list">
+  <a href="{{ links['accounting-transactions-add'].url }}" class="transactions-list-toggle" type="button" aria-controls="transactions-list" aria-label="Toggle transactions menu">
+    <span class="transactions-list-toggle__icon">Add Transaction</span>
+  </a>
+  <div class="transactions-list" aria-labelledby="transactions-list">
+    <table>
+      <tbody>
+      {{ dump() }}
+      {% for key, tx in transactions %}
+        <tr class="transactions-list--{{ key }}">
+          <td>{{ tx.name }}</td>
+          <td>{{- tx.group -}}</td>
+          <td>{{- tx.balance|number_format(2, ',', '.') -}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

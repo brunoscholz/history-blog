@@ -1,0 +1,49 @@
+# accounting/config/install/core.entity_form_display.accounting_account.accounting_account.default.yml
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.accounting_account.accounting_account.field_balance
+    - field.field.accounting_account.accounting_account.field_group
+    - field.field.accounting_account.accounting_account.field_name
+  module:
+    - accounting
+id: accounting_account.accounting_account.default
+targetEntityType: accounting_account
+bundle: accounting_account
+mode: default
+content:
+  field_balance:
+    type: number
+    weight: 123
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_group:
+    type: string_textfield
+    weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_name:
+    type: string_textfield
+    weight: 121
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

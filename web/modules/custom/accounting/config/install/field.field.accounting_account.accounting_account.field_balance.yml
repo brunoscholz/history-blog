@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.accounting_account.field_balance
+  module:
+    - accounting
+id: accounting_account.accounting_account.field_balance
+field_name: field_balance
+entity_type: accounting_account
+bundle: accounting_account
+label: Account Balance
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

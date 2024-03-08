@@ -1,0 +1,13 @@
+.accounts-list--content {
+  border: 1px solid gray;
+  padding: 0 1rem;
+  font-size: 0.5rem;
+}
+
+.accounts-list--content p {
+  margin: 0;
+}
+
+.accounts-list--content h6 {
+  font-size: 0.7rem;
+}

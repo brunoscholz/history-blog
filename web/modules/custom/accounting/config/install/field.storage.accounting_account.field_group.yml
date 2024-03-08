@@ -1,0 +1,21 @@
+# accounting/config/install/field.storage.accounting_account.field_group.yml
+langcode: en
+status: true
+dependencies:
+  module:
+    - accounting
+id: accounting_account.field_group
+field_name: field_group
+entity_type: accounting_account
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

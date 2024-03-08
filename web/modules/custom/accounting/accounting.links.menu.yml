@@ -19,12 +19,30 @@ accounting.accounts:
   description: 'Configure accounts.'
   weight: 10
 
+accounting.transactions:
+  title: 'Transactions'
+  route_name: 'accounting.transactions'
+  parent: 'accounting.admin_accounting'
+  description: 'Configure transactions.'
+  weight: 11
+
 accounting.dashboard:
   title: 'Simple content link'
   description: 'Test for content menus'
   route_name: accounting.admin_accounting
   weight: 10
   menu_name: main
+
+# entity.accounting_account.settings:
+#   title: 'Accounts Settings'
+#   description: 'Configure Account entity type.'
+#   route_name:  entity.accounting_account.settings
+#   parent: system.admin_structure
+# entity.accounting_account.collection:
+#   title: 'Accounts'
+#   description: 'List of Accounts.'
+#   route_name: entity.accounting_account.collection
+#   parent: system.admin_content
 
 # accounting.store_configuration:
 #   title: 'Store'

@@ -5,29 +5,52 @@
  * Install, update and uninstall functions for the accounting_account module.
  */
 
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_install().
+ */
+function accounting_install() {
+  populate_defaults();
+  _accounting_account_view();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function accounting_uninstall() {
+  // Remove all entities
+  $entities = \Drupal::entityTypeManager()->getStorage('accounting_account')->loadMultiple();
+  foreach ($entities as $entity) {
+    $entity->delete();
+  }
+}
+
+/**
+ * Install kpi list data view.
+ */
+function _accounting_account_view() {
+  $module = \Drupal::service('module_handler')->getModule('accounting');
+  $config_path = $module->getPath() . '/config/view';
+  $config_source = new FileStorage($config_path);
+  \Drupal::service('config.installer')->installOptionalConfig($config_source);
+}
+
 function accounting_schema() {
   // Create a database table called 'accounting_account' wit the following columns:
   // 1) id [serial], 2) uid [int], 3) nid [int], 4) mail [varchar], 5) created [int]
   $schema['accounting_account'] = [
-    'description' => 'Stores name, group, balance, nid and uid for an Account.',
+    'description' => 'Stores name, group, balance and uid for an Account.',
     'fields' => [
       'id' => [
         'description' => 'The primary identifier for the record.',
         'type' => 'serial',
-        'size' => 'small', // tiny / small / medium / normal / big
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
       'uid' => [
         'description' => 'The {users}.uid that added this Account.',
         'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ],
-      'nid' => [
-        'description' => 'The {node}.nid for this Account.',
-        'type' => 'int',
-        'unsigned' => TRUE,
         'not null' => TRUE,
         'default' => 0,
       ],
@@ -53,10 +76,6 @@ function accounting_schema() {
       ],
     ],
     'primary key' => ['id'],
-    'indexes' => [
-      'node' => ['nid'],
-      'node_user' => ['nid', 'uid'],
-    ],
   ];
 
   // Create a database table named 'accounting_account_enabled' with the following fields:
@@ -130,4 +149,164 @@ function accounting_schema() {
   ];
 
   return $schema;
+}
+
+
+/**
+ * Populate tables with defaults values for correctly module work.
+ */
+function populate_defaults() {
+  // Create and save default entities.
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Cash',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Accounts Receivable',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Prepaid Expenses',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Inventory',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Fixed Assets',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Accumulated Depreciation',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Other Assets',
+    'group' => 'Assets',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Accounts Payable',
+    'group' => 'Liabilities',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Accrued Liabilities',
+    'group' => 'Liabilities',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Taxes Payable',
+    'group' => 'Liabilities',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Payroll Payable',
+    'group' => 'Liabilities',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Notes Payable',
+    'group' => 'Liabilities',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Common Stock',
+    'group' => 'Equity',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Retained Earnings',
+    'group' => 'Equity',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Additional Paid In Capital',
+    'group' => 'Equity',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Revenue',
+    'group' => 'Revenue',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Sales returns and Allowances',
+    'group' => 'Revenue',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Cost of Goods Sold',
+    'group' => 'Expenses',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Bank Fees',
+    'group' => 'Expenses',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Utilities Expense',
+    'group' => 'Expenses',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+  $entity = \Drupal\accounting\Entity\Account::create([
+    'uid' => 1,
+    'name' => 'Other Expenses',
+    'group' => 'Expenses',
+    'balance' => 0.00,
+  ]);
+  $entity->save();
+
+  // $populate = new LoopSyncPopulate();
+
+  // $populate->run();
+
 }

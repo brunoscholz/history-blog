@@ -6,5 +6,8 @@ core_version_requirement: ^9.3 || ^10
 configure: accounting.configuration
 # dependencies:
 
+libraries:
+  - core/jquery
+
 version: '8.x-2.38'
 project: 'accounting'

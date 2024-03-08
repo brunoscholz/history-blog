@@ -84,6 +84,7 @@ class AccountingSettingsForm extends ConfigFormBase {
         'Dollar' => $this->t('USD'),
         'Bitcoin' => $this->t('BTC'),
       ],
+      '#default_value' => $this->getDefaultValue('currency', $config),
       '#description' => $this->t('Which type to get from configs.'),
     ];
 
@@ -113,7 +114,11 @@ class AccountingSettingsForm extends ConfigFormBase {
   protected $defaultValuesMap = [
     'account_groups' => [
       'type' => 'string',
-      'value' => "Assets\nLiabilities\nEquity\nRevenue\nExpenses\nOther",
+      'value' => "Assets\r\nLiabilities\r\nEquity\r\nRevenue\r\nExpenses\r\nOther",
+    ],
+    'currency' => [
+      'type' => 'string',
+      'value' => 'USD',
     ],
   ];
 

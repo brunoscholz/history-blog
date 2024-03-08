@@ -2,6 +2,7 @@
 
 namespace Drupal\accounting\Controller;
 
+use Drupal\accounting\Entity\Account;
 use Drupal\accounting\Form\AccountForm;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Ajax\AjaxResponse;
@@ -56,11 +57,11 @@ class AccountController extends ControllerBase {
       $select_query->join('users_field_data', 'u', 'a.uid = u.uid');
 
       // Join the node table, so we can get the event's name.
-      $select_query->join('node_field_data', 'n', 'a.nid = n.nid');
+      // $select_query->join('node_field_data', 'n', 'a.nid = n.nid');
 
       // Select these specific fields for the output.
       $select_query->addField('u', 'name', 'username');
-      $select_query->addField('n', 'title');
+      // $select_query->addField('n', 'title');
       $select_query->addField('a', 'name');
       $select_query->addField('a', 'group');
       $select_query->addField('a', 'balance');
@@ -74,7 +75,7 @@ class AccountController extends ControllerBase {
       // https://www.php.net/manual/en/pdostatement.fetch.php
       $entries = $select_query->execute()->fetchAll(\PDO::FETCH_ASSOC);
 
-      // Return the associative array of RSVPList entries.
+      // Return the associative array of account entries.
       return $entries;
     }
     catch (\Exception $e) {
@@ -101,14 +102,14 @@ class AccountController extends ControllerBase {
       '#sufix' => '</div>',
     ];
 
-    $key = Html::cleanCssIdentifier('accounting.accounts_add', [
+    $key = Html::cleanCssIdentifier('accounting.account_add_form', [
       '.' => '-',
       '_' => '-',
     ]);
     $links[$key] = [
       'title' => 'Add Account',
       'description' => '',
-      'url' => Url::fromRoute('accounting.accounts_add'),
+      'url' => Url::fromRoute('accounting.account_add_form'),
       'weight' => 0,
     ];
 
@@ -120,11 +121,6 @@ class AccountController extends ControllerBase {
       '#weight' => 0,
     ];
 
-    // $build['account_form'] = [
-    //   '#theme' => 'accounting_dashboard_accounts_form',
-    //   '#form' => $form,
-    // ];
-
     // $this->moduleHandler->alter('accounting_dashboard_page_build', $build);
 
     return $build;
@@ -133,12 +129,12 @@ class AccountController extends ControllerBase {
   public function addAccount() {
     // Create the form object.
     $form = $this->formBuilder()->getForm(AccountForm::class);
-    // $build['accounts_form'] = [
-    //   '#theme' => 'accounting_dashboard_accounts_form',
-    //   '#form' => $form,
-    //   '#weight' => 0,
-    // ];
+    return $form;
+  }
 
+  public function editAccount(Request $request, string $account) {
+    // Create the form object.
+    $form = $this->formBuilder()->getForm(AccountForm::class, $account);
     return $form;
   }
 

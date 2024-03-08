@@ -3,7 +3,7 @@
  * accounting Management links styling.
  */
 
- .accounting-dashboard--management-links .management-links {
+.accounting-dashboard--management-links .management-links {
   --management-icon: var(--accounting-icon--store);
 
   display: none;
@@ -104,7 +104,7 @@
   --management-icon: var(--accounting-icon--person-vcard-fill);
 }
 
-.accounting-dashboard--management-links .management-link--entity-accounting-pricelist-collection {
+.accounting-dashboard--management-links .management-link--accounting-accounts {
   --management-icon: var(--accounting-icon--tags-fill);
 }
 
@@ -112,7 +112,7 @@
   --management-icon: var(--accounting-icon--truck-front-fill);
 }
 
-.accounting-dashboard--management-links .management-link--entity-accounting-subscription-collection {
+.accounting-dashboard--management-links .management-link--accounting-transactions {
   --management-icon: var(--accounting-icon--envelope-plus-fill);
 }
 

@@ -24,8 +24,26 @@ function accounting_theme($existing, $type, $theme, $path) {
       'variables' => [
         'accounts' => [],
         'links' => [],
-        'form' => [],
+      ],
+    ],
+    'accounting_dashboard_transactions_list' => [
+      'variables' => [
+        'transactions' => [],
+        'links' => [],
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function accounting_views_data() {
+  $data['accounts_table']['table']['group'] = t('Accounts');
+  $data['accounts_table']['table']['base'] = [
+    'field' => 'id',
+    'title' => t('Account'),
+    'help' => t('Account Chart.'),
+  ];
+  return $data;
 }

@@ -8,22 +8,49 @@ accounting.admin_accounting:
 
 accounting.accounts:
   path: '/admin/accounting/accounts'
-  defaults:
-    _controller: '\Drupal\accounting\Controller\AccountController::accountsPage'
-    link_id: 'accounting.accounts'
-    _title: 'Accounts'
+#   defaults:
+#     _controller: '\Drupal\accounting\Controller\AccountController::accountsPage'
+#     link_id: 'accounting.accounts'
+#     _title: 'Accounts'
   requirements:
     _permission: 'access accounts pages/view'
 
-accounting.accounts_add:
+accounting.account_add_form:
   path: '/admin/accounting/accounts/add'
   defaults:
     _controller: '\Drupal\accounting\Controller\AccountController::addAccount'
-    link_id: 'accounting.accounts_add'
+    link_id: 'accounting.account_add_form'
     _title: 'New Account'
     _template: 'modules/custom/accounting/templates/accounting-dashboard-accounts-form.html.twig'
   requirements:
     _permission: 'access accounts pages/view'
+
+accounting.account_edit_form:
+  path: '/admin/accounting/accounts/{account}/edit'
+  defaults:
+    _form: '\Drupal\accounting\Form\AccountForm'
+    _title: 'Edit Account'
+  requirements:
+    _permission: 'access accounts pages/view'
+
+accounting.transactions:
+  path: '/admin/accounting/transactions'
+  defaults:
+    _controller: '\Drupal\accounting\Controller\TransactionController::transactionsPage'
+    link_id: 'accounting.transactions'
+    _title: 'Transaction'
+  requirements:
+    _permission: 'access transactions pages/view'
+
+accounting.transactions_add:
+  path: '/admin/accounting/transactions/add'
+  defaults:
+    _controller: '\Drupal\accounting\Controller\TransactionController::addTransaction'
+    link_id: 'accounting.transactions_add'
+    _title: 'New Transaction'
+    _template: 'modules/custom/accounting/templates/accounting-dashboard-transactions-form.html.twig'
+  requirements:
+    _permission: 'access transactions pages/view'
 
 accounting.configuration:
   path: '/admin/accounting/config'

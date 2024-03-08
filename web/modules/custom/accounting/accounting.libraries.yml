@@ -18,3 +18,17 @@ dashboard:
     - core/once
   js:
     js/accounting.management-links.js: {}
+
+accordion:
+  js:
+    https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js: { type: external }
+  css:
+    theme:
+      https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.css: { type: external }
+
+autocomplete:
+  js:
+    js/accounting.account-autocomplete.js: {}
+  css:
+    theme:
+      css/accounting.account-autocomplete.css: {}

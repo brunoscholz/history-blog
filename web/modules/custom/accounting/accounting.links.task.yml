@@ -1,0 +1,9 @@
+# entity.accounting_account.settings:
+#   title: 'Settings'
+#   route_name: entity.accounting_account.settings
+#   base_route: entity.accounting_account.settings
+# entity.accounting_account.collection:
+#   title: 'Accounts'
+#   route_name: entity.accounting_account.collection
+#   base_route: system.admin_content
+#   weight: 10

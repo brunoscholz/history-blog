@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.accounting_account.field_group
+  module:
+    - accounting
+id: accounting_account.accounting_account.field_group
+field_name: field_group
+entity_type: accounting_account
+bundle: accounting_account
+label: 'Account Group'
+description: 'The group to which the entity belongs.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

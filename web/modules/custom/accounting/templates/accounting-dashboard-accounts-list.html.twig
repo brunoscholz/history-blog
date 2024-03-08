@@ -3,15 +3,21 @@
     <span class="accounts-list-toggle__icon">Add Account</span>
   </a>
   <div class="accounts-list" aria-labelledby="accounts-list">
-    {{ dump() }}
-    {% for key, account in accounts %}
-    <div class="accounts-list--{{ key }}">
-      <div class="card">
-        <p>{{ account.name }}</p>
-        <p>{{ account.group }}</p>
-        <p>{{ account.balance }}</p>
-      </div>
-    </div>
-    {% endfor %}
+    {# {% block order_items %} #}
+      <table>
+        <tbody>
+        {% for key, account in accounts %}
+          <tr class="accounts-list--{{ key }}">
+            <td>{{ account.name }}</td>
+            <td>{{- account.group -}}</td>
+            <td>{{- account.balance|number_format(2, ',', '.') -}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {# {% endblock %}
+    {% block totals %}
+      {{ rendered_totals }}
+    {% endblock %} #}
   </div>
 </div>
