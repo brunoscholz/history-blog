@@ -1,0 +1,18 @@
+#!/bin/bash
+## Description: Run npm commands inside theme.
+## Usage: npm [flags] [args]
+## Example: "npm install or npm rebuild node-sass or npm run build or npm run watch"
+
+# go to theme directory
+cd /var/www/html/web/themes/custom/blog_history
+
+# if first arg is --dir, move to that directory
+FARG=$1
+if [[ "${FARG}" == "--dir" ]]; then
+  cd $2
+  # remove the first 2 args
+  shift 2
+fi
+
+# pass the other args to npm
+npm $@

@@ -1,0 +1,23 @@
+name: History Blog Theme
+type: theme
+description: 'The History of YOU blog theme.'
+package: History
+core_version_requirement: ^9 || ^10
+
+libraries:
+  - blog_history/global-styling
+  - blog_history/global-scripts
+
+base theme: olivero
+
+regions:
+  header: Header
+  primary_menu: Primary menu
+  secondary_menu: Secondary menu
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar: Sidebar
+  content_below: Content Below
+  footer_top: Footer Top
+  footer_bottom: Footer Bottom

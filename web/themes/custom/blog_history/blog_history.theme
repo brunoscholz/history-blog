@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the blog_history theme.
+ */
+
+// require_once "includes/pages.inc";

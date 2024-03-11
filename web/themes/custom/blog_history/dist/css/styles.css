@@ -1,0 +1,68 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[0].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[4]!./node_modules/sass-resources-loader/lib/loader.js??ruleSet[1].rules[0].use[5]!./scss/main.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*
+ * Global Imports
+ *
+ * Add here styles that need to be added in the main.scss (dist/css/styles.css) file
+ */
+.content-hidden {
+  display: none;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+#page-wrapper {
+  margin: 2% 15%;
+  background-color: #ffffff;
+}
+#page-wrapper .container.full-width {
+  padding-inline: unset;
+  padding: 0;
+}
+#page-wrapper #block-blog-history-breadcrumbs, #page-wrapper #block-blog-history-content {
+  grid-column: 1/13;
+}
+#page-wrapper footer.site-footer {
+  background: #2ab7ca;
+  border: unset;
+  min-height: 115px;
+}
+
+#block-blog-history-site-branding {
+  margin: 0;
+  width: 100%;
+  background: transparent;
+  border-top: 10px solid #2ab7ca;
+  min-height: 130px;
+}
+#block-blog-history-site-branding .site-branding__inner {
+  height: unset;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#block-blog-history-site-branding .site-branding__inner .logo-wrapper img {
+  width: 120px;
+  height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+}
+#block-blog-history-site-branding .site-branding__inner .site-branding__text {
+  padding: 30px 0 20px 0;
+  font-weight: bold;
+  font-size: 45px;
+  font-family: "Noto sans", sans-serif;
+  text-align: left;
+  color: #283655;
+  line-height: 55px;
+}
+#block-blog-history-site-branding .site-branding__inner .site-branding__divider {
+  text-align: left;
+  border-bottom: 6px solid #1e1f26;
+  width: 110px;
+  margin-bottom: 70px;
+}
+
+/*# sourceMappingURL=styles.css.map*/

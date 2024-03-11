@@ -1,0 +1,16 @@
+# Global Libraries
+global-styling:
+  version: VERSION
+  css:
+    layout:
+      dist/css/styles.css: {}
+
+global-scripts:
+  version: VERSION
+  js:
+    dist/js/scripts.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/once
